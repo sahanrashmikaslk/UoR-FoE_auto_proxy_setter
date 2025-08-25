@@ -91,26 +91,36 @@ This application provides complete proxy management for Windows environments, sp
 
 ## File Structure
 
-### Core Application Files
+### Core Application Files (4 files)
 
 - `proxy_manager.py` - Main system tray application
 - `proxy_manager_silent.pyw` - Silent launcher (no console window)
 - `config_gui.py` - Configuration window interface with dark theme
 - `proxy_config.json` - Application settings file
 
-### Installation & Management Scripts
+### Installation & Management Scripts (5 files)
 
-- `install.bat` - Complete installation script
-- `start.bat` - Quick start with setup instructions
-- `start_silent.bat` - Start silently without console window
+- `install.bat` - Complete installation and setup
+- `start.bat` - Quick start with automatic silent launch
 - `config.bat` - Open configuration window
-- `status.bat` - System status checker
+- `status.bat` - Check current proxy status
 - `uninstall.bat` - Remove from Windows startup
 
-### Support Files
+### Support Files (3 files)
 
 - `requirements.txt` - Python dependencies
 - `.gitignore` - Git ignore patterns
+- `README.md` - This documentation file
+
+**Total: 12 essential files (clean and organized)**
+
+## Quick Start
+
+1. **Install**: Run `install.bat` as administrator
+2. **Start**: Run `start.bat` or look for system tray icon
+3. **Configure**: Run `config.bat` to customize settings
+4. **Status**: Run `status.bat` to check current state
+5. **Remove**: Run `uninstall.bat` to remove from startup
 
 ## Usage Guide
 

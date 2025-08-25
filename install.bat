@@ -79,7 +79,6 @@ echo 4. Right-click for more options including configuration
 echo.
 echo Manual controls:
 echo - start.bat        : Start the application manually
-echo - start_silent.bat : Start silently without console window  
 echo - config.bat       : Open configuration window
 echo - uninstall.bat    : Remove from startup
 echo.

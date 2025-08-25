@@ -27,7 +27,6 @@ echo Available commands:
 echo - install.bat          : Full installation
 echo - config.bat           : Open configuration  
 echo - start.bat            : Start application (this file)
-echo - start_silent.bat     : Start silently without console
 echo - status.bat           : Check proxy status
 echo - uninstall.bat        : Remove from startup
 echo.
