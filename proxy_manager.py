@@ -11,6 +11,8 @@ from PIL import Image, ImageDraw
 import psutil
 
 class ProxyManager:
+    VERSION = "1.1.1"
+    
     def __init__(self):
         # Load configuration
         self.config = self.load_config()
@@ -58,17 +60,57 @@ class ProxyManager:
             self.is_proxy_enabled = False
     
     def create_icon_image(self, color):
-        """Create system tray icon"""
-        image = Image.new('RGB', (64, 64), color)
+        """Create modern round system tray icon"""
+        # Create a larger image for better quality
+        size = 64
+        image = Image.new('RGBA', (size, size), (0, 0, 0, 0))  # Transparent background
         draw = ImageDraw.Draw(image)
         
-        # Draw a simple proxy icon
+        # Calculate circle dimensions with padding
+        padding = 6
+        circle_size = size - (padding * 2)
+        
+        # Main circle (outer ring)
+        outer_circle = [padding, padding, padding + circle_size, padding + circle_size]
+        
         if color == (0, 255, 0):  # Green for enabled
-            draw.rectangle([10, 10, 54, 54], fill=(255, 255, 255), outline=(0, 0, 0), width=2)
-            draw.text((20, 25), "ON", fill=(0, 0, 0))
+            # Draw outer ring
+            draw.ellipse(outer_circle, fill=(34, 197, 94), outline=(22, 163, 74), width=2)
+            
+            # Draw inner circle
+            inner_padding = padding + 8
+            inner_circle = [inner_padding, inner_padding, 
+                          size - inner_padding, size - inner_padding]
+            draw.ellipse(inner_circle, fill=(34, 197, 94))
+            
+            # Draw checkmark or "ON" indicator
+            center_x, center_y = size // 2, size // 2
+            # Draw a simple dot to indicate "ON"
+            dot_size = 6
+            dot_coords = [center_x - dot_size, center_y - dot_size,
+                         center_x + dot_size, center_y + dot_size]
+            draw.ellipse(dot_coords, fill=(255, 255, 255))
+            
         else:  # Red for disabled
-            draw.rectangle([10, 10, 54, 54], fill=(255, 255, 255), outline=(0, 0, 0), width=2)
-            draw.text((18, 25), "OFF", fill=(0, 0, 0))
+            # Draw outer ring
+            draw.ellipse(outer_circle, fill=(239, 68, 68), outline=(220, 38, 38), width=2)
+            
+            # Draw inner circle
+            inner_padding = padding + 8
+            inner_circle = [inner_padding, inner_padding, 
+                          size - inner_padding, size - inner_padding]
+            draw.ellipse(inner_circle, fill=(239, 68, 68))
+            
+            # Draw "X" or "OFF" indicator
+            center_x, center_y = size // 2, size // 2
+            line_length = 8
+            # Draw X
+            draw.line([center_x - line_length, center_y - line_length,
+                      center_x + line_length, center_y + line_length], 
+                     fill=(255, 255, 255), width=3)
+            draw.line([center_x + line_length, center_y - line_length,
+                      center_x - line_length, center_y + line_length], 
+                     fill=(255, 255, 255), width=3)
         
         return image
     
@@ -121,20 +163,34 @@ class ProxyManager:
     def set_npm_proxy(self, enable=True):
         """Set npm proxy configuration"""
         try:
+            # First check if npm is available
+            result = subprocess.run(["npm", "--version"], 
+                                   capture_output=True, text=True, timeout=10)
+            if result.returncode != 0:
+                print("npm not available, skipping npm proxy configuration")
+                return True
+            
             if enable:
                 subprocess.run(["npm", "config", "set", "proxy", self.proxy_url], 
-                             check=True, capture_output=True)
+                             check=True, capture_output=True, timeout=30)
                 subprocess.run(["npm", "config", "set", "https-proxy", self.proxy_url], 
-                             check=True, capture_output=True)
+                             check=True, capture_output=True, timeout=30)
             else:
+                # Use delete with --ignore-errors to avoid errors if keys don't exist
                 subprocess.run(["npm", "config", "delete", "proxy"], 
-                             check=True, capture_output=True)
+                             capture_output=True, timeout=30)
                 subprocess.run(["npm", "config", "delete", "https-proxy"], 
-                             check=True, capture_output=True)
+                             capture_output=True, timeout=30)
+            return True
+        except subprocess.TimeoutExpired:
+            print("npm command timed out, skipping npm proxy configuration")
+            return True
+        except FileNotFoundError:
+            print("npm not installed, skipping npm proxy configuration")
             return True
         except Exception as e:
-            print(f"Error setting npm proxy: {e}")
-            return False
+            print(f"npm proxy configuration skipped: {e}")
+            return True  # Return True to not fail the entire operation
     
     def set_vscode_proxy(self, enable=True):
         """Set VS Code proxy configuration"""
@@ -188,11 +244,14 @@ class ProxyManager:
         self.is_proxy_enabled = True
         self.update_icon()
         
-        # Show notification
+        # Show notification with modern styling
         if self.icon:
             success_count = sum(1 for _, success in results if success)
             total_count = len(results)
-            self.icon.notify(f"Proxy enabled ({success_count}/{total_count} successful)", "Uni-Proxy Manager")
+            if success_count == total_count:
+                self.icon.notify("✅ Proxy enabled successfully!", f"Uni-Proxy Manager v{self.VERSION}")
+            else:
+                self.icon.notify(f"⚠️ Proxy enabled ({success_count}/{total_count} apps)", f"Uni-Proxy Manager v{self.VERSION}")
         
         return results
     
@@ -213,11 +272,14 @@ class ProxyManager:
         self.is_proxy_enabled = False
         self.update_icon()
         
-        # Show notification
+        # Show notification with modern styling
         if self.icon:
             success_count = sum(1 for _, success in results if success)
             total_count = len(results)
-            self.icon.notify(f"Proxy disabled ({success_count}/{total_count} successful)", "Uni-Proxy Manager")
+            if success_count == total_count:
+                self.icon.notify("🔴 Proxy disabled successfully!", f"Uni-Proxy Manager v{self.VERSION}")
+            else:
+                self.icon.notify(f"⚠️ Proxy disabled ({success_count}/{total_count} apps)", f"Uni-Proxy Manager v{self.VERSION}")
         
         return results
     
@@ -238,8 +300,9 @@ class ProxyManager:
         """Check and return current proxy status"""
         self.check_proxy_status()
         status = "Enabled" if self.is_proxy_enabled else "Disabled"
+        status_icon = "🟢" if self.is_proxy_enabled else "🔴"
         if self.icon:
-            self.icon.notify(f"Proxy Status: {status}", "Uni-Proxy Manager")
+            self.icon.notify(f"{status_icon} Proxy Status: {status}", f"Uni-Proxy Manager v{self.VERSION}")
     
     def quit_app(self):
         """Quit the application"""
@@ -260,7 +323,7 @@ class ProxyManager:
         self.proxy_server = f"{self.config['proxy_server']}:{self.config['proxy_port']}"
         self.proxy_url = f"http://{self.proxy_server}"
         if self.icon:
-            self.icon.notify("Configuration reloaded", "Uni-Proxy Manager")
+            self.icon.notify("🔄 Configuration reloaded", f"Uni-Proxy Manager v{self.VERSION}")
     
     def create_menu(self):
         """Create system tray menu"""
@@ -287,7 +350,7 @@ class ProxyManager:
         self.icon = pystray.Icon(
             "Uni-Proxy Manager",
             icon_image,
-            "Uni-Proxy Manager - Click to toggle",
+            f"Uni-Proxy Manager v{self.VERSION} - Click to toggle",
             menu=self.create_menu()
         )
         
@@ -298,21 +361,22 @@ class ProxyManager:
         self.icon.run()
 
 def add_to_startup():
-    """Add application to Windows startup"""
+    """Add application to Windows startup using silent launcher"""
     try:
-        # Get current script path
-        script_path = os.path.abspath(__file__)
+        # Get current directory and create path to silent launcher
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        silent_launcher = os.path.join(script_dir, "proxy_manager_silent.pyw")
         
-        # Create startup shortcut
+        # Create startup shortcut to silent launcher
         key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, 
                            r"Software\Microsoft\Windows\CurrentVersion\Run", 
                            0, winreg.KEY_SET_VALUE)
         
         winreg.SetValueEx(key, "UniProxyManager", 0, winreg.REG_SZ, 
-                         f'python "{script_path}"')
+                         f'pythonw "{silent_launcher}"')
         winreg.CloseKey(key)
         
-        print("Added to startup successfully!")
+        print("Added to startup successfully (silent mode)!")
         return True
     except Exception as e:
         print(f"Error adding to startup: {e}")
@@ -344,7 +408,8 @@ if __name__ == "__main__":
             remove_from_startup()
             sys.exit(0)
         elif sys.argv[1] == "--help":
-            print("Uni-Proxy Manager")
+            print(f"Uni-Proxy Manager v{ProxyManager.VERSION}")
+            print("Bug fixes: npm error handling, modern UI, round icons")
             print("Usage:")
             print("  python proxy_manager.py           - Run the application")
             print("  python proxy_manager.py --add-startup    - Add to Windows startup")

@@ -1,6 +1,6 @@
 @echo off
 echo ====================================
-echo    Uni-Proxy Manager Status Check
+echo  Uni-Proxy Manager v1.1 Status Check
 echo ====================================
 echo.
 

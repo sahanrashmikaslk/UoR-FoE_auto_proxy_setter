@@ -1,6 +1,28 @@
-# Uni-Proxy Manager for Windows
+# Uni-Proxy Manager for Windows v1.1.1
 
 A comprehensive proxy management tool for Windows that allows you to easily toggle proxy settings for your entire system, Git, npm, and VS Code from a convenient system tray icon.
+
+## What's New in v1.1.1
+
+- **Modern Dark Theme**: Complete dark theme makeover for the configuration GUI
+  - Professional dark color palette with high contrast
+  - Enhanced button visibility with proper styling
+  - Better spacing and layout for improved usability
+- **Silent Operation**: Application now runs completely in background
+  - No console window appearing on startup
+  - Professional Windows application behavior
+  - Silent startup with Windows boot
+- **Enhanced Notifications**: Improved system tray notifications
+  - Correct version display in notifications
+  - Better status feedback with emoji indicators
+  - Professional notification styling
+
+## Previous Updates (v1.1)
+
+- **Fixed npm error handling**: No more errors when npm is not installed
+- **Modern round icons**: Beautiful circular system tray icons with clear indicators
+- **Improved UI**: Modern configuration window with better styling
+- **Better error handling**: Graceful handling of missing applications
 
 ## Overview
 
@@ -72,23 +94,23 @@ This application provides complete proxy management for Windows environments, sp
 ### Core Application Files
 
 - `proxy_manager.py` - Main system tray application
-- `config_gui.py` - Configuration window interface
+- `proxy_manager_silent.pyw` - Silent launcher (no console window)
+- `config_gui.py` - Configuration window interface with dark theme
 - `proxy_config.json` - Application settings file
 
-### Batch Files for Easy Management
+### Installation & Management Scripts
 
 - `install.bat` - Complete installation script
-- `start.bat` - Quick start/first-time setup
-- `run.bat` - Start application manually
+- `start.bat` - Quick start with setup instructions
+- `start_silent.bat` - Start silently without console window
 - `config.bat` - Open configuration window
 - `status.bat` - System status checker
 - `uninstall.bat` - Remove from Windows startup
 
-### Support and Documentation Files
+### Support Files
 
 - `requirements.txt` - Python dependencies
-- `test_proxy.py` - Functionality test script
-- `test_components.py` - Component verification script
+- `.gitignore` - Git ignore patterns
 
 ## Usage Guide
 
@@ -284,11 +306,25 @@ The `proxy_config.json` file stores all application settings:
 
 ### Quick System Test
 
-Run the included test scripts:
+Use the status checker to verify functionality:
 
 ```cmd
-python test_proxy.py
-python test_components.py
+status.bat
+```
+
+### Manual Testing
+
+Test proxy toggle functionality:
+
+```cmd
+# Start the application
+start.bat
+
+# Check current status
+status.bat
+
+# Configure settings
+config.bat
 ```
 
 ### Manual Verification
@@ -415,9 +451,34 @@ python proxy_manager.py
 1. Run `python proxy_manager.py --help` for command line options
 2. Use `status.bat` for system diagnostics
 3. Check configuration with `config.bat`
-4. Test functionality with `test_proxy.py`
 
 For technical support regarding proxy server settings, contact your network administrator or IT department.
+
+## Version History
+
+### Version 1.1.1 (August 25, 2025)
+
+- **Modern Dark Theme**: Complete UI overhaul with professional dark theme
+- **Silent Operation**: Application runs without console window
+- **Enhanced Button Visibility**: Fixed GUI button visibility issues
+- **Better Notifications**: Improved system tray notifications with correct version display
+- **Larger Window**: Increased configuration window size for better usability
+
+### Version 1.1 (August 25, 2025)
+
+- **Fixed npm error handling**: Graceful handling when npm is not installed
+- **Modern round icons**: Circular system tray icons with better visual indicators
+- **Improved configuration GUI**: Better styling and layout
+- **Enhanced error handling**: Better error reporting and user feedback
+- **Updated branding**: Renamed to "Uni-Proxy Manager" throughout
+
+### Version 1.0 (Initial Release)
+
+- System tray integration for easy proxy toggling
+- Windows system proxy management
+- Git, npm, and VS Code proxy configuration
+- Auto-startup with Windows
+- Configuration GUI and command line interface
 
 ## License
 

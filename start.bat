@@ -1,6 +1,6 @@
 @echo off
 echo ====================================
-echo       Uni-Proxy Manager v1.0
+echo      Uni-Proxy Manager v1.1.1
 echo    Quick Setup Instructions
 echo ====================================
 echo.
@@ -17,14 +17,18 @@ if not exist "proxy_config.json" (
     echo - Click icon to toggle proxy on/off  
     echo - Right-click for menu options
     echo.
-    python proxy_manager.py
+    echo Starting silently in background...
+    start "" pythonw proxy_manager_silent.pyw
+    echo Application started! Check your system tray for the proxy icon.
 )
 
 echo.
 echo Available commands:
-echo - install.bat   : Full installation
-echo - config.bat    : Open configuration  
-echo - run.bat       : Start application
-echo - uninstall.bat : Remove from startup
+echo - install.bat          : Full installation
+echo - config.bat           : Open configuration  
+echo - start.bat            : Start application (this file)
+echo - start_silent.bat     : Start silently without console
+echo - status.bat           : Check proxy status
+echo - uninstall.bat        : Remove from startup
 echo.
 pause

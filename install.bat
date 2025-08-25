@@ -1,4 +1,6 @@
-@echo off
+@echo ====================================
+echo   Uni-Proxy Manager v1.1 Installer
+echo ====================================o off
 echo ====================================
 echo    Uni-Proxy Manager Installer
 echo ====================================
@@ -61,7 +63,13 @@ echo ====================================
 echo    Installation Complete!
 echo ====================================
 echo.
-echo The Uni-Proxy Manager has been installed successfully!
+echo The Uni-Proxy Manager v1.1 has been installed successfully!
+echo.
+echo What's new in v1.1:
+echo - Fixed npm error handling
+echo - Modern round system tray icons
+echo - Improved UI design
+echo - Better error reporting
 echo.
 echo What's next:
 echo 1. The application will start automatically with Windows
@@ -70,16 +78,20 @@ echo 3. Click the icon to toggle proxy on/off
 echo 4. Right-click for more options including configuration
 echo.
 echo Manual controls:
-echo - run.bat        : Start the application manually
-echo - config.bat     : Open configuration window
-echo - uninstall.bat  : Remove from startup
+echo - start.bat        : Start the application manually
+echo - start_silent.bat : Start silently without console window  
+echo - config.bat       : Open configuration window
+echo - uninstall.bat    : Remove from startup
 echo.
 echo Icon indicators:
 echo - Green = Proxy enabled
 echo - Red   = Proxy disabled
 echo.
 echo Starting the application now...
-start python proxy_manager.py
+start "" pythonw proxy_manager_silent.pyw
 
+echo.
+echo The application is now running silently in the background!
+echo Look for the proxy icon in your system tray.
 echo.
 pause
