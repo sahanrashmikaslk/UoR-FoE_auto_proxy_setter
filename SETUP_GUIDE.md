@@ -19,11 +19,13 @@ This is a comprehensive proxy management tool that provides:
 ## 📁 Files Overview
 
 ### Main Files
+
 - `proxy_manager.py` - Main application (system tray)
 - `config_gui.py` - Configuration window
 - `proxy_config.json` - Settings file
 
 ### Batch Files
+
 - `install.bat` - Complete installation
 - `start.bat` - Quick start/setup check
 - `run.bat` - Start application manually
@@ -32,6 +34,7 @@ This is a comprehensive proxy management tool that provides:
 - `uninstall.bat` - Remove from startup
 
 ### Support Files
+
 - `requirements.txt` - Python dependencies
 - `test_proxy.py` - Test functionality
 - `README.md` - Documentation
@@ -39,12 +42,14 @@ This is a comprehensive proxy management tool that provides:
 ## 🛠 Installation Steps
 
 ### Automatic Installation
+
 ```cmd
 # Run as administrator (recommended)
 install.bat
 ```
 
 ### Manual Installation
+
 ```cmd
 # 1. Install Python packages
 pip install pystray Pillow psutil
@@ -62,12 +67,14 @@ python proxy_manager.py
 ## 🎮 Usage Guide
 
 ### System Tray Icon
+
 - **Green Circle**: Proxy is enabled
 - **Red Circle**: Proxy is disabled
 - **Left Click**: Toggle proxy on/off
 - **Right Click**: Access full menu
 
 ### Menu Options
+
 - **Toggle Proxy**: Switch proxy on/off
 - **Check Status**: Show current status
 - **Enable/Disable Proxy**: Force specific state
@@ -76,6 +83,7 @@ python proxy_manager.py
 - **Quit**: Exit application
 
 ### Configuration Window
+
 - **Proxy Server**: Change proxy server address
 - **Port**: Change proxy port
 - **Auto Start**: Start with Windows
@@ -84,34 +92,40 @@ python proxy_manager.py
 ## 🔧 What Gets Configured
 
 ### Windows System Proxy
+
 - Sets system-wide proxy in Internet Settings
 - Affects browsers, Windows Store, etc.
 - Includes bypass rules for local addresses
 
 ### Git Configuration
+
 ```bash
 git config --global http.proxy http://10.50.225.222:3128
 git config --global https.proxy http://10.50.225.222:3128
 ```
 
 ### npm Configuration
+
 ```bash
 npm config set proxy http://10.50.225.222:3128
 npm config set https-proxy http://10.50.225.222:3128
 ```
 
 ### VS Code Settings
+
 Adds to `%APPDATA%\Code\User\settings.json`:
+
 ```json
 {
-    "http.proxy": "http://10.50.225.222:3128",
-    "http.proxyStrictSSL": false
+  "http.proxy": "http://10.50.225.222:3128",
+  "http.proxyStrictSSL": false
 }
 ```
 
 ## 🔍 Troubleshooting
 
 ### Application Won't Start
+
 ```cmd
 # Check Python installation
 python --version
@@ -124,17 +138,20 @@ status.bat
 ```
 
 ### Proxy Not Working
+
 1. Check if application is running (look for tray icon)
 2. Verify proxy settings in configuration
 3. Test proxy connection in config window
 4. Restart affected applications
 
 ### Icon Not Visible
+
 - Check Windows system tray settings
 - Look in "hidden icons" area
 - Try restarting the application
 
 ### Startup Issues
+
 ```cmd
 # Check startup registration
 reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "ProxyManager"
@@ -146,6 +163,7 @@ python proxy_manager.py --add-startup
 ## 🎯 Advanced Usage
 
 ### Custom Proxy Settings
+
 1. Run `config.bat`
 2. Change server/port as needed
 3. Test connection
@@ -153,6 +171,7 @@ python proxy_manager.py --add-startup
 5. Restart application
 
 ### Command Line Control
+
 ```cmd
 # Add to startup
 python proxy_manager.py --add-startup
@@ -165,6 +184,7 @@ python proxy_manager.py --help
 ```
 
 ### Backup Configuration
+
 Simply copy `proxy_config.json` to backup your settings.
 
 ## 📋 System Requirements
@@ -185,6 +205,7 @@ Simply copy `proxy_config.json` to backup your settings.
 ## 🆘 Support
 
 ### Quick Diagnostics
+
 ```cmd
 # Full system check
 status.bat
@@ -197,6 +218,7 @@ type proxy_config.json
 ```
 
 ### Common Issues
+
 1. **Python not found**: Install Python and add to PATH
 2. **Access denied**: Run as administrator
 3. **Proxy unreachable**: Check network connection
@@ -206,13 +228,13 @@ type proxy_config.json
 
 ```json
 {
-    "proxy_server": "10.50.225.222",
-    "proxy_port": "3128", 
-    "auto_start": true,
-    "enable_windows": true,
-    "enable_git": true,
-    "enable_npm": true,
-    "enable_vscode": true
+  "proxy_server": "10.50.225.222",
+  "proxy_port": "3128",
+  "auto_start": true,
+  "enable_windows": true,
+  "enable_git": true,
+  "enable_npm": true,
+  "enable_vscode": true
 }
 ```
 
@@ -231,6 +253,7 @@ python proxy_manager.py --remove-startup
 ---
 
 **University of Roehampton Proxy Settings**
+
 - Server: 10.50.225.222
 - Port: 3128
 - Protocol: HTTP

@@ -49,21 +49,7 @@ echo All packages installed successfully!
 
 REM Create initial configuration
 echo Creating default configuration...
-python -c "
-import json
-config = {
-    'proxy_server': '10.50.225.222',
-    'proxy_port': '3128',
-    'auto_start': True,
-    'enable_windows': True,
-    'enable_git': True,
-    'enable_npm': True,
-    'enable_vscode': True
-}
-with open('proxy_config.json', 'w') as f:
-    json.dump(config, f, indent=4)
-print('Configuration file created!')
-"
+python -c "import json; config = {'proxy_server': '10.50.225.222', 'proxy_port': '3128', 'auto_start': True, 'enable_windows': True, 'enable_git': True, 'enable_npm': True, 'enable_vscode': True}; json.dump(config, open('proxy_config.json', 'w'), indent=4); print('Configuration file created!')"
 
 REM Add to startup
 echo.

@@ -5,7 +5,7 @@ A comprehensive proxy management tool for Windows that allows you to easily togg
 ## Features
 
 - **System Tray Integration**: Easy access from the Windows system tray
-- **Comprehensive Proxy Management**: 
+- **Comprehensive Proxy Management**:
   - Windows OS proxy settings
   - Git proxy configuration
   - npm proxy configuration
@@ -23,12 +23,14 @@ A comprehensive proxy management tool for Windows that allows you to easily togg
 ## Usage
 
 ### System Tray Icon
+
 - **Green Icon**: Proxy is enabled
 - **Red Icon**: Proxy is disabled
 - **Left Click**: Toggle proxy on/off
 - **Right Click**: Access menu with more options
 
 ### Menu Options
+
 - **Toggle Proxy**: Switch proxy on/off
 - **Check Status**: Show current proxy status
 - **Enable Proxy**: Force enable proxy
@@ -36,11 +38,14 @@ A comprehensive proxy management tool for Windows that allows you to easily togg
 - **Quit**: Exit the application
 
 ### Manual Control
+
 You can also run the application manually:
+
 - `run.bat` - Start the proxy manager
 - `uninstall.bat` - Remove from startup
 
 ### Command Line Options
+
 ```bash
 python proxy_manager.py                    # Run the application
 python proxy_manager.py --add-startup      # Add to Windows startup
@@ -51,6 +56,7 @@ python proxy_manager.py --help             # Show help
 ## Proxy Configuration
 
 The application is pre-configured with the University of Roehampton proxy settings:
+
 - **Proxy Server**: 10.50.225.222:3128
 - **Protocol**: HTTP
 
@@ -59,7 +65,7 @@ The application is pre-configured with the University of Roehampton proxy settin
 When you enable the proxy, the application configures:
 
 1. **Windows System Proxy**: Internet settings for all Windows applications
-2. **Git Configuration**: 
+2. **Git Configuration**:
    - `git config --global http.proxy`
    - `git config --global https.proxy`
 3. **npm Configuration**:
@@ -82,16 +88,19 @@ When you enable the proxy, the application configures:
 ## Troubleshooting
 
 ### Application won't start
+
 - Make sure Python is installed and in your PATH
 - Run `install.bat` as administrator if needed
 - Check that all requirements are installed: `pip install -r requirements.txt`
 
 ### Proxy not working for specific applications
+
 - Some applications may need to be restarted after changing proxy settings
 - Corporate firewalls might block certain proxy configurations
 - Try disabling and re-enabling the proxy
 
 ### Icon not appearing in system tray
+
 - Check if the application is running in Task Manager
 - Make sure system tray icons are not hidden in Windows settings
 
