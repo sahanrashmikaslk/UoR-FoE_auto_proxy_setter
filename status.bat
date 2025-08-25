@@ -1,6 +1,6 @@
 @echo off
 echo ====================================
-echo    Proxy Manager Status Check
+echo    Uni-Proxy Manager Status Check
 echo ====================================
 echo.
 
@@ -115,7 +115,7 @@ echo.
 
 REM Check if running at startup
 echo Checking startup configuration...
-reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "ProxyManager" >nul 2>&1
+reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "UniProxyManager" >nul 2>&1
 if errorlevel 1 (
     echo [-] Not configured to start with Windows
 ) else (

@@ -1,4 +1,4 @@
-# Proxy Manager for Windows
+# Uni-Proxy Manager for Windows
 
 A comprehensive proxy management tool for Windows that allows you to easily toggle proxy settings for your entire system, Git, npm, and VS Code from a convenient system tray icon.
 
@@ -272,7 +272,7 @@ The `proxy_config.json` file stores all application settings:
 1. Check startup registration:
 
    ```cmd
-   reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "ProxyManager"
+   reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "UniProxyManager"
    ```
 
 2. Re-add to startup:
@@ -390,7 +390,7 @@ uninstall.bat
 python proxy_manager.py --remove-startup
 
 # Or manually remove registry entry
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "ProxyManager"
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "UniProxyManager"
 ```
 
 ## Support and Debugging

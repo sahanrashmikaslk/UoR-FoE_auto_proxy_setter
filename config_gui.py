@@ -7,7 +7,7 @@ from pathlib import Path
 class ProxyConfigGUI:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("Proxy Manager Configuration")
+        self.root.title("Uni-Proxy Manager Configuration")
         self.root.geometry("500x400")
         self.root.resizable(False, False)
         

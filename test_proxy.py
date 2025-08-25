@@ -5,8 +5,8 @@ import winreg
 from pathlib import Path
 
 def test_proxy_functions():
-    """Test proxy manager functions without GUI"""
-    print("Testing Proxy Manager Functions")
+    """Test uni-proxy manager functions without GUI"""
+    print("Testing Uni-Proxy Manager Functions")
     print("=" * 40)
     
     # Import the proxy manager
@@ -76,7 +76,7 @@ def test_proxy_functions():
 if __name__ == "__main__":
     try:
         test_proxy_functions()
-        print("\nProxy Manager test completed successfully!")
+        print("\nUni-Proxy Manager test completed successfully!")
     except Exception as e:
         print(f"\nError during testing: {e}")
         sys.exit(1)

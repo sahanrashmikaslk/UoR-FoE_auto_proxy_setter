@@ -1,6 +1,6 @@
 @echo off
 echo ====================================
-echo    Proxy Manager Installer
+echo    Uni-Proxy Manager Installer
 echo ====================================
 
 REM Check if Python is installed
@@ -61,7 +61,7 @@ echo ====================================
 echo    Installation Complete!
 echo ====================================
 echo.
-echo The Proxy Manager has been installed successfully!
+echo The Uni-Proxy Manager has been installed successfully!
 echo.
 echo What's next:
 echo 1. The application will start automatically with Windows

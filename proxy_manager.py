@@ -192,7 +192,7 @@ class ProxyManager:
         if self.icon:
             success_count = sum(1 for _, success in results if success)
             total_count = len(results)
-            self.icon.notify(f"Proxy enabled ({success_count}/{total_count} successful)", "Proxy Manager")
+            self.icon.notify(f"Proxy enabled ({success_count}/{total_count} successful)", "Uni-Proxy Manager")
         
         return results
     
@@ -217,7 +217,7 @@ class ProxyManager:
         if self.icon:
             success_count = sum(1 for _, success in results if success)
             total_count = len(results)
-            self.icon.notify(f"Proxy disabled ({success_count}/{total_count} successful)", "Proxy Manager")
+            self.icon.notify(f"Proxy disabled ({success_count}/{total_count} successful)", "Uni-Proxy Manager")
         
         return results
     
@@ -239,7 +239,7 @@ class ProxyManager:
         self.check_proxy_status()
         status = "Enabled" if self.is_proxy_enabled else "Disabled"
         if self.icon:
-            self.icon.notify(f"Proxy Status: {status}", "Proxy Manager")
+            self.icon.notify(f"Proxy Status: {status}", "Uni-Proxy Manager")
     
     def quit_app(self):
         """Quit the application"""
@@ -252,7 +252,7 @@ class ProxyManager:
             subprocess.Popen([sys.executable, "config_gui.py"], cwd=Path(__file__).parent)
         except Exception as e:
             if self.icon:
-                self.icon.notify(f"Failed to open config: {e}", "Proxy Manager")
+                self.icon.notify(f"Failed to open config: {e}", "Uni-Proxy Manager")
     
     def reload_config(self):
         """Reload configuration from file"""
@@ -260,7 +260,7 @@ class ProxyManager:
         self.proxy_server = f"{self.config['proxy_server']}:{self.config['proxy_port']}"
         self.proxy_url = f"http://{self.proxy_server}"
         if self.icon:
-            self.icon.notify("Configuration reloaded", "Proxy Manager")
+            self.icon.notify("Configuration reloaded", "Uni-Proxy Manager")
     
     def create_menu(self):
         """Create system tray menu"""
@@ -285,9 +285,9 @@ class ProxyManager:
         
         # Create system tray icon
         self.icon = pystray.Icon(
-            "Proxy Manager",
+            "Uni-Proxy Manager",
             icon_image,
-            "Proxy Manager - Click to toggle",
+            "Uni-Proxy Manager - Click to toggle",
             menu=self.create_menu()
         )
         
@@ -308,7 +308,7 @@ def add_to_startup():
                            r"Software\Microsoft\Windows\CurrentVersion\Run", 
                            0, winreg.KEY_SET_VALUE)
         
-        winreg.SetValueEx(key, "ProxyManager", 0, winreg.REG_SZ, 
+        winreg.SetValueEx(key, "UniProxyManager", 0, winreg.REG_SZ, 
                          f'python "{script_path}"')
         winreg.CloseKey(key)
         
@@ -325,7 +325,7 @@ def remove_from_startup():
                            r"Software\Microsoft\Windows\CurrentVersion\Run", 
                            0, winreg.KEY_SET_VALUE)
         
-        winreg.DeleteValue(key, "ProxyManager")
+        winreg.DeleteValue(key, "UniProxyManager")
         winreg.CloseKey(key)
         
         print("Removed from startup successfully!")
@@ -344,7 +344,7 @@ if __name__ == "__main__":
             remove_from_startup()
             sys.exit(0)
         elif sys.argv[1] == "--help":
-            print("Proxy Manager")
+            print("Uni-Proxy Manager")
             print("Usage:")
             print("  python proxy_manager.py           - Run the application")
             print("  python proxy_manager.py --add-startup    - Add to Windows startup")

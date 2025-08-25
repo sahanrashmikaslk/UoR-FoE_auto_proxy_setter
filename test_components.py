@@ -74,7 +74,7 @@ def test_proxy_manager_import():
         return False
 
 if __name__ == "__main__":
-    print("Proxy Manager Component Test")
+    print("Uni-Proxy Manager Component Test")
     print("=" * 50)
     
     # Test system tray functionality
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     print("\n" + "=" * 50)
     if tray_ok and manager_ok:
         print("✓ ALL TESTS PASSED!")
-        print("\nThe Proxy Manager should work correctly.")
+        print("\nThe Uni-Proxy Manager should work correctly.")
         print("You can now run: python proxy_manager.py")
     else:
         print("✗ SOME TESTS FAILED!")

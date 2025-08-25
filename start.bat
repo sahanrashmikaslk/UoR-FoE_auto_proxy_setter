@@ -1,6 +1,6 @@
 @echo off
 echo ====================================
-echo       Proxy Manager v1.0
+echo       Uni-Proxy Manager v1.0
 echo    Quick Setup Instructions
 echo ====================================
 echo.
@@ -10,7 +10,7 @@ if not exist "proxy_config.json" (
     echo Running full installation...
     call install.bat
 ) else (
-    echo Configuration found. Starting Proxy Manager...
+    echo Configuration found. Starting Uni-Proxy Manager...
     echo.
     echo Controls:
     echo - Look for red/green icon in system tray
