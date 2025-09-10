@@ -1,5 +1,5 @@
 ===============================================
-   Uni-Proxy Manager v1.1.1 - FINAL RELEASE
+Uni-Proxy Manager v1.1.1 - FINAL RELEASE
 ===============================================
 
 🎉 **ISSUES FIXED:**
@@ -12,34 +12,36 @@
 📦 **TWO VERSIONS CREATED:**
 
 1️⃣ **FIXED PORTABLE VERSION** (Recommended for testing)
-   📂 Folder: UniProxyManager_Fixed_Portable\
-   📄 Size: ~21MB executable
-   🔧 What's Fixed: 
-      • Config window works (embedded GUI)
-      • Right-click tray icon → Configuration ✅
-      • Config.bat for direct config access
-      • --config command line option
+📂 Folder: UniProxyManager_Fixed_Portable\
+ 📄 Size: ~21MB executable
+🔧 What's Fixed:
+• Config window works (embedded GUI)
+• Right-click tray icon → Configuration ✅
+• Config.bat for direct config access
+• --config command line option
 
 2️⃣ **SINGLE INSTALLER** (Complete installation solution)
-   📄 File: dist_installer\UniProxyManager_Installer.exe
-   📄 Size: ~32MB
-   🔧 Features:
-      • GUI installation wizard
-      • Standard or Portable installation
-      • Auto-startup configuration
-      • Windows integration (Start Menu, shortcuts)
+📄 File: dist_installer\UniProxyManager_Installer.exe
+📄 Size: ~32MB
+🔧 Features:
+• GUI installation wizard
+• Standard or Portable installation
+• Auto-startup configuration
+• Windows integration (Start Menu, shortcuts)
 
 ===============================================
 
 🚀 **FOR TESTING ON ANOTHER PC:**
 
 **Option A - Quick Test (Fixed Portable):**
+
 1. Copy entire "UniProxyManager_Fixed_Portable" folder
-2. Run "Start.bat" or "UniProxyManager.exe" 
+2. Run "Start.bat" or "UniProxyManager.exe"
 3. Test config: Right-click tray icon → Configuration
 4. OR run "Config.bat" directly
 
 **Option B - Full Installation (Single Installer):**
+
 1. Copy "UniProxyManager_Installer.exe" to other PC
 2. Run installer → Choose installation type
 3. Follow installation wizard
@@ -49,15 +51,15 @@
 
 🔧 **WHAT WAS FIXED:**
 
-❌ **OLD PROBLEM:** 
-   Config window didn't open when right-clicking tray icon
-   (Tried to run separate Python script in executable)
+❌ **OLD PROBLEM:**
+Config window didn't open when right-clicking tray icon
+(Tried to run separate Python script in executable)
 
 ✅ **SOLUTION:**
-   • Embedded config_gui.py directly into main executable
-   • Added threading support for non-blocking GUI
-   • Added --config command line option
-   • Created Config.bat for easy access
+• Embedded config_gui.py directly into main executable
+• Added threading support for non-blocking GUI
+• Added --config command line option
+• Created Config.bat for easy access
 
 ===============================================
 
@@ -85,21 +87,22 @@
 
 **Fixed Portable Version:**
 UniProxyManager_Fixed_Portable\
-├── UniProxyManager.exe     (Main app - config works!)
-├── Start.bat              (Easy launcher)
-├── Config.bat             (Direct config access)
-├── proxy_config.json      (Settings file)
-└── README.md              (Documentation)
+├── UniProxyManager.exe (Main app - config works!)
+├── Start.bat (Easy launcher)
+├── Config.bat (Direct config access)
+├── proxy_config.json (Settings file)
+└── README.md (Documentation)
 
 **Single Installer:**
 dist_installer\
-└── UniProxyManager_Installer.exe  (Complete installer)
+└── UniProxyManager_Installer.exe (Complete installer)
 
 ===============================================
 
 🎯 **RECOMMENDED TESTING FLOW:**
 
 1. **Start with Fixed Portable** on test PC
+
    - Quick setup, no installation needed
    - Test all functionality including config window
    - Verify proxy toggle works
@@ -141,6 +144,7 @@ dist_installer\
 🎉 **READY FOR DISTRIBUTION!**
 
 Both versions are now ready for testing and distribution:
+
 - Use Fixed Portable for quick testing
 - Use Single Installer for end users
 - Config window issue is completely resolved!
