@@ -1,0 +1,3 @@
+@echo off 
+echo Opening Configuration Window... 
+start "" "UniProxyManager.exe" --config 

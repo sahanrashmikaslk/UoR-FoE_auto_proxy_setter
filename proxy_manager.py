@@ -312,7 +312,23 @@ class ProxyManager:
     def open_config(self):
         """Open configuration window"""
         try:
-            subprocess.Popen([sys.executable, "config_gui.py"], cwd=Path(__file__).parent)
+            # Import and run config GUI directly (for executable compatibility)
+            import threading
+            from config_gui import ProxyConfigGUI
+            
+            def run_config():
+                try:
+                    app = ProxyConfigGUI()
+                    app.root.mainloop()
+                except Exception as e:
+                    print(f"Config GUI error: {e}")
+                    if self.icon:
+                        self.icon.notify(f"Config error: {e}", "Uni-Proxy Manager")
+            
+            # Run in separate thread to not block system tray
+            config_thread = threading.Thread(target=run_config, daemon=True)
+            config_thread.start()
+            
         except Exception as e:
             if self.icon:
                 self.icon.notify(f"Failed to open config: {e}", "Uni-Proxy Manager")
@@ -407,6 +423,12 @@ if __name__ == "__main__":
         elif sys.argv[1] == "--remove-startup":
             remove_from_startup()
             sys.exit(0)
+        elif sys.argv[1] == "--config":
+            # Run only the configuration GUI
+            from config_gui import ProxyConfigGUI
+            app = ProxyConfigGUI()
+            app.root.mainloop()
+            sys.exit(0)
         elif sys.argv[1] == "--help":
             print(f"Uni-Proxy Manager v{ProxyManager.VERSION}")
             print("Bug fixes: npm error handling, modern UI, round icons")
@@ -414,6 +436,7 @@ if __name__ == "__main__":
             print("  python proxy_manager.py           - Run the application")
             print("  python proxy_manager.py --add-startup    - Add to Windows startup")
             print("  python proxy_manager.py --remove-startup - Remove from Windows startup")
+            print("  python proxy_manager.py --config         - Open configuration window only")
             print("  python proxy_manager.py --help           - Show this help")
             sys.exit(0)
     

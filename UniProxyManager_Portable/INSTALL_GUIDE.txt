@@ -1,0 +1,111 @@
+===============================================
+  Uni-Proxy Manager v1.1.1 - Portable Version
+===============================================
+
+🎯 QUICK START (3 Steps):
+
+1. EXTRACT: Copy this entire folder anywhere on your PC
+2. RUN: Double-click "Start.bat" 
+3. ENJOY: Look for the red/green circle icon in your system tray!
+
+===============================================
+
+📁 WHAT'S INCLUDED:
+
+✅ UniProxyManager.exe     - Main application (no Python needed!)
+✅ Start.bat             - Easy launcher 
+✅ proxy_config.json     - Configuration file
+✅ README.md            - Complete documentation
+
+===============================================
+
+🚀 INSTALLATION OPTIONS:
+
+Option A - Quick Test:
+- Just run "Start.bat" to test immediately
+- No installation needed!
+
+Option B - Permanent Setup:
+1. Copy folder to: C:\Program Files\UniProxyManager\
+2. Run the application once 
+3. Right-click tray icon → Settings
+4. Enable "Auto Start with Windows"
+5. Done! It will start automatically with Windows
+
+===============================================
+
+🎮 HOW TO USE:
+
+👀 LOOK FOR: Red or green circle in system tray (bottom-right)
+   🔴 RED = Proxy OFF    🟢 GREEN = Proxy ON
+
+🖱️ LEFT CLICK: Toggle proxy on/off instantly
+🖱️ RIGHT CLICK: Open full menu (settings, status, etc.)
+
+===============================================
+
+⚙️ CONFIGURATION:
+
+🔧 Default Settings (University of Roehampton):
+   Server: 10.50.225.222
+   Port: 3128
+
+✏️ To Change Settings:
+1. Right-click tray icon
+2. Click "Configuration" 
+3. Update server/port as needed
+4. Click "Save"
+
+===============================================
+
+🌐 WHAT GETS MANAGED:
+
+✅ Windows System Proxy (Internet Options)
+✅ Git global proxy settings  
+✅ npm proxy configuration
+✅ VS Code proxy settings
+
+When you toggle ON: All get proxy enabled
+When you toggle OFF: All get proxy disabled
+
+===============================================
+
+🆘 TROUBLESHOOTING:
+
+❓ Don't see tray icon?
+   → Check hidden icons area (click ^ arrow in tray)
+   → Make sure application is running in Task Manager
+
+❓ Proxy not working?
+   → Try toggling off then on again
+   → Check proxy server address in settings
+   → Restart browser/application after toggling
+
+❓ Won't start automatically with Windows?
+   → Right-click tray icon → Configuration
+   → Enable "Auto Start with Windows"
+   → Click "Save"
+
+===============================================
+
+🎯 TESTING ON ANOTHER PC:
+
+1. Copy entire "UniProxyManager_Portable" folder
+2. Run "Start.bat" 
+3. Update proxy settings if needed (right-click → Configuration)
+4. Test by opening browser and checking internet access
+
+===============================================
+
+📞 NEED HELP?
+
+📖 Read: README.md (complete documentation)
+🔧 Check: Right-click tray icon → "Check Status"
+💬 For network issues: Contact your IT administrator
+
+===============================================
+
+🎉 Enjoy your automated proxy management!
+
+No more manual proxy switching! 
+Just one click to toggle between university and home networks.
