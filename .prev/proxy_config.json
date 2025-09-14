@@ -1,0 +1,9 @@
+{
+    "proxy_server": "10.50.225.222",
+    "proxy_port": "3128",
+    "auto_start": true,
+    "enable_windows": true,
+    "enable_git": true,
+    "enable_npm": true,
+    "enable_vscode": true
+}
